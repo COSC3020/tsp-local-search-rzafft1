@@ -40,6 +40,10 @@ the previous one did otherwise. Start with the template I provided in `code.js`.
 Describe in your code how you designed your stopping criterion and ways of
 choosing $i$ and $k$ and why.
 
+- I used a nested for loop for to pick values i and k, so that k is equal to i + 1, so that it will never be equal to i
+
+- Currently, I have no method to stop the function, I just run it n times 
+
 The function takes a distance matrix (the adjacency matrix for the graph where
 the values in the cells are the distances between the corresponding cities) and
 returns the length of the shortest tour (not the tour itself).
@@ -51,3 +55,9 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+- Time Complexity
+* in the worst case the _tsp_ls function will have a complexity of O(n^4), since we run a nested for loop that has a time complexity of $O(n^2)$, and inside our nested for loop we use our optSwap and getPathDist functions that both have a complexity of $O(n)$... now combining this with our help function, tsp_ls, we get a total time complexity of $O(n^4 * 2^n)$ since we run the _tsp_ls function $2^n$ times.
+
+- Space Complexity
+* the space complexity of this code is just $O(n)$. We dont need to keep track of a cache like we did with tsp-held-karp, so instead we really just need to keep track of the current cities array of length n. 
